@@ -4,8 +4,8 @@ import java.util.Map;
 
 public class ParsedReview {
     private final String text;
-    private final Map<String,String> metadata;
-    public ParsedReview(String text, Map<String,String> metadata) {
+    private final Map<String,Object> metadata;
+    public ParsedReview(String text, Map<String,Object> metadata) {
         this.text = text;
         this.metadata = metadata;
     }
@@ -13,7 +13,7 @@ public class ParsedReview {
     public String getText() {
         return text;
     }
-    public Map<String, String> getMetadata() {
+    public Map<String, Object> getMetadata() {
         return metadata;
     }
 

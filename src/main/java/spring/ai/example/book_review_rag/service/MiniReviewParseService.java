@@ -13,7 +13,7 @@ public class MiniReviewParseService {
     public ParsedReview parse(String html) {
         Document doc = Jsoup.parse(html);
 
-        Map<String, String> metadata = new HashMap<>();
+        Map<String, Object> metadata = new HashMap<>();
 
 
         Element titleEl = doc.selectFirst("div.header p");
@@ -33,7 +33,7 @@ public class MiniReviewParseService {
         return new ParsedReview(reviewText, metadata);
     }
 
-    private void parseAuthorAndTranslator(String raw, Map<String, String> metadata) {
+    private void parseAuthorAndTranslator(String raw, Map<String, Object> metadata) {
         // Examples:
         // "Rosinka Chaudhuri"
         // "Perumal Murugan, translated by Iswarya V."
