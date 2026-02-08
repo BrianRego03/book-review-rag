@@ -16,6 +16,7 @@ public class BookReviewRagApplication {
 		System.setProperty("EMBEDDING_MODEL", dotenv.get("EMBEDDING_MODEL"));
 		System.setProperty("CHAT_MODEL", dotenv.get("CHAT_MODEL"));
 		System.setProperty("TABLE_NAME", dotenv.get("TABLE_NAME"));
+		System.setProperty("FILE_PATH", dotenv.get("FILE_PATH"));
 		SpringApplication.run(BookReviewRagApplication.class, args);
 	}
 
