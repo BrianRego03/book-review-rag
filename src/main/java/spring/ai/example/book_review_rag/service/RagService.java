@@ -1,6 +1,8 @@
 package spring.ai.example.book_review_rag.service;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.messages.UserMessage;
+import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.SystemPromptTemplate;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.SearchRequest;
@@ -10,6 +12,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -40,6 +43,16 @@ public class RagService {
                 .collect(Collectors.joining("\n"));
 
         SystemPromptTemplate systemPromptTemplate = new SystemPromptTemplate(RagTemplate);
+
+        Prompt prompt = new Prompt(List.of(
+                systemPromptTemplate.createMessage(
+                        Map.of("information", information)),
+                new UserMessage(message)
+                )
+        );
+        System.out.println("prompt: " + prompt.getContents());
+
+        return chatClient.prompt(prompt).call().content();
 
     }
 
