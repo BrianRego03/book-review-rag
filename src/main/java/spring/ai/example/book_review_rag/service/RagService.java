@@ -24,8 +24,8 @@ public class RagService {
     private Resource RagTemplate;
 
 
-    public RagService(ChatClient chatClient, VectorStore vectorStore) {
-        this.chatClient = chatClient;
+    public RagService(ChatClient.Builder chatClientBuilder, VectorStore vectorStore) {
+        this.chatClient = chatClientBuilder.build();
         this.vectorStore = vectorStore;
     }
 
