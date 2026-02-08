@@ -51,7 +51,7 @@ public class DocumentLoader implements CommandLineRunner {
 //            System.out.println(doc.getMetadata());
 //            System.out.println("------------------");
         }
-        vectorStore.add(documents);
+//        vectorStore.add(documents);
 
 //        documents.add(new Document(
 //                "Another book of poetry set against the pandemic but in Sri Lanka. The academic who has written widely on gender equality " +
