@@ -4,11 +4,13 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Service;
 import spring.ai.example.book_review_rag.dto.ParsedReview;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Service
 public class MiniReviewParseService {
     public ParsedReview parse(String html) {
         Document doc = Jsoup.parse(html);
