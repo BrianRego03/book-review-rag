@@ -39,8 +39,15 @@ public class RagService {
         System.out.println("similarDocs: " + similarDocs);
         String information = similarDocs
                 .stream()
-                .map(Document::getText)
-                .collect(Collectors.joining("\n"));
+                .map(doc->{
+                    String meta = "Title: " + doc.getMetadata().get("title")
+                            + ", Author: " + doc.getMetadata().get("author");
+                    if(doc.getMetadata().containsKey("translator")) {
+                        meta+=", Translator: " + doc.getMetadata().get("translator");
+                    }
+                    return meta + "\n" + doc.getText();
+                })
+                .collect(Collectors.joining("\n\n"));
 
         SystemPromptTemplate systemPromptTemplate = new SystemPromptTemplate(RagTemplate);
 
