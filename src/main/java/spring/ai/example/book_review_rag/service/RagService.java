@@ -1,6 +1,8 @@
 package spring.ai.example.book_review_rag.service;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
+import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.SystemPromptTemplate;
@@ -24,8 +26,12 @@ public class RagService {
     private Resource RagTemplate;
 
 
-    public RagService(ChatClient.Builder chatClientBuilder, VectorStore vectorStore) {
-        this.chatClient = chatClientBuilder.build();
+    public RagService(ChatClient.Builder chatClientBuilder, VectorStore vectorStore, ChatMemory chatMemory) {
+        this.chatClient = chatClientBuilder
+                .defaultAdvisors(
+                        MessageChatMemoryAdvisor.builder(chatMemory).build()
+                )
+                .build();
         this.vectorStore = vectorStore;
     }
 
