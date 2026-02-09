@@ -16,7 +16,7 @@ public class PhiChatModelConfig {
                 .defaultOptions(
                         OllamaChatOptions
                                 .builder()
-                                .model("phi3:latest")
+                                .model("phi3:mini")
                                 .build()
                 )
                 .build();
