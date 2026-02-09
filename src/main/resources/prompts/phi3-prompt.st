@@ -11,10 +11,10 @@ Rules:
 
 Respond ONLY in valid JSON using this exact schema:
 
-{
-  "retrieve": true | false,
+{{
+  "retrieve": true,
   "query": "string"
-}
+}}
 
 User message:
 "{user_message}"
